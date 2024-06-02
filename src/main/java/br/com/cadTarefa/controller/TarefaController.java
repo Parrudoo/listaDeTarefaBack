@@ -32,11 +32,13 @@ public class TarefaController implements Serializable {
         return ResponseEntity.ok().body(tarefaService.listarTarefa());
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id){
          tarefaService.deletar(id);
     }
 
+    @CrossOrigin
     @PutMapping("/atualizar/{id}")
     public ResponseEntity<Optional<Tarefa>> atualizar(@PathVariable Long id, @RequestBody Tarefa tarefa){
         Optional<Tarefa> taf = tarefaService.atualizar(id, tarefa);
