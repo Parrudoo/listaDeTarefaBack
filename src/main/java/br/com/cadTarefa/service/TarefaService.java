@@ -3,6 +3,8 @@ package br.com.cadTarefa.service;
 import br.com.cadTarefa.model.Tarefa;
 import br.com.cadTarefa.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +23,8 @@ public class TarefaService  {
         return tarefaRepository.save(tarefa);
     }
 
-    public List<Tarefa> listarTarefa() {
-        return tarefaRepository.findAll();
+    public Page<Tarefa> listarTarefa(Pageable pageable) {
+        return tarefaRepository.findAll(pageable);
     }
 
     public void deletar(Long id) {
